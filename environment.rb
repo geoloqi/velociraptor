@@ -13,14 +13,14 @@ class Controller < Sinatra::Base
   # Application specific configuration
   ##
 
-  raise 'Configuration error: session secret (and likely other settings) are not set. Change in environment.rb and remove the raise statement'
+  puts '###### WARNING: session secret (and likely other settings) are not set. Change in environment.rb and remove the raise statement'
   set :sessions,                 true
   set :session_secret,           'PUT SOMETHING HERE'
   set :geoloqi_memcache_enabled, false
   set :geoloqi_memcache_url,     '127.0.0.1:11211'
   set :geoloqi_client_id,        'PUT CLIENT ID HERE'
   set :geoloqi_client_secret,    'PUT CLIENT SECRET HERE'
-
+  set :google_analytics_id,      ''
 
   ##
   # The rest of this you shouldn't need to change (initially).
@@ -31,6 +31,8 @@ class Controller < Sinatra::Base
   set :method_override, true
   set :public,          'public'
   set :erubis,          :escape_html => true
+
+  GA_ID = settings.google_analytics_id
 
   register Sinatra::Synchrony
   register Sinatra::Namespace
