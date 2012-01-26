@@ -2,3 +2,4 @@ logs/*
 .bundle
 .DS_Store
 config.yml
+spec/coverage
