@@ -1,5 +1,5 @@
 class Widgets < Controller
   get '/?' do
-    'This is the /widgets/? route.'
+    erb :'widgets/index'
   end
 end

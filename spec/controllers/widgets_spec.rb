@@ -9,7 +9,7 @@ describe Widgets do
     it 'returns 200' do
       get '/'
       last_response.status.must_equal 200
-      last_response.body.must_equal 'This is the /widgets/? route.'
+      last_response.body.must_match /TEST/
     end
   end
 

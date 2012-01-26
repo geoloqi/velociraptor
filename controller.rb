@@ -1,5 +1,5 @@
 class Controller < Sinatra::Base
   get '/?' do
-    'hello'
+    erb :'index'
   end
 end
