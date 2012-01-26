@@ -1,5 +1,11 @@
-require File.join(File.expand_path(File.dirname(__FILE__)), 'environment.rb')
+require './environment.rb'
 
 map '/' do
   run Controller
+end
+
+Controller.controller_names.each do |controller_name|
+  map "/#{controller_name}" do
+    eval "run #{controller_name.capitalize}"
+  end
 end

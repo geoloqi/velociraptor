@@ -1,14 +1,15 @@
-require File.join File.expand_path(File.dirname(__FILE__)), 'environment.rb'
+require_relative './helper.rb'
 
 describe Controller do
-  include Rack::Test::Methods
-  def app; Controller end
-
-  describe 'the index route' do
-    it 'should load correctly' do
+  before do
+    @app = Controller
+  end
+  
+  describe 'the index' do
+    it 'should say hello' do
       get '/'
-      expect_that { last_response.ok? }
-      expect_that { last_response.body.length > 0 }
+      last_response.status.must_equal 200
+      last_response.body.must_equal 'hello'
     end
   end
 end

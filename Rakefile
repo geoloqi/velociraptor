@@ -1,12 +1,5 @@
-require 'bundler'
-Bundler.setup
-require "rake/testtask"
+require 'rake/testtask'
 
-desc "Run all tests"
 Rake::TestTask.new do |t|
-  t.libs << "spec"
-  t.test_files = FileList['spec/*_spec.rb']
-  t.verbose = true
+  t.test_files = Dir.glob("spec/**/*_spec.rb")
 end
-
-task :default => :test

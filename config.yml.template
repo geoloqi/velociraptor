@@ -1,0 +1,5 @@
+development:
+  session_secret: PUT SOMETHING HERE
+  geoloqi_id: 1234ABCD
+  geoloqi_secret: 5678EFGH
+  database_url: mysql2://root@127.0.0.1/database_name
