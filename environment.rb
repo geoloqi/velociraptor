@@ -30,6 +30,12 @@ class Controller < Sinatra::Base
     set     :session_secret, $config.session_secret
     enable  :sessions
     
+    # Geoloqi client.
+    register Sinatra::Geoloqi
+    set :geoloqi_client_id,     $config.geoloqi_id
+    set :geoloqi_client_secret, $config.geoloqi_secret
+    set :geoloqi_redirect_uri,  'http://127.0.0.1:4567'
+    
     # Memcache client.
     # settings.cache.get 'key'
     # settings.cache.set 'key', 'value'
