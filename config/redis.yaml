@@ -1,0 +1,15 @@
+defaults: &defaults  
+  redis_url: http://localhost:6379
+
+development:  
+  <<: *defaults
+
+test:  
+    <<: *defaults
+
+staging:  
+    <<: *defaults
+
+production:  
+    <<: *defaults
+

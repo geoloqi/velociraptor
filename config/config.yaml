@@ -1,0 +1,14 @@
+defaults: &defaults  
+  title: Application Framework
+
+development:  
+  <<: *defaults
+
+test:  
+  <<: *defaults
+
+staging:  
+  <<: *defaults
+
+production:  
+  <<: *defaults
