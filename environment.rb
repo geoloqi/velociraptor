@@ -67,7 +67,8 @@ class Controller < Sinatra::Base
 end
 
 # Require Controllers
-Dir.glob(['./controller.rb','./controllers/*.rb']).each do |f| 
+require_relative './controller.rb'
+Dir.glob(['controllers'].map! {|d| File.join d, '*.rb'}).each do |f| 
   require_relative f
   
   # Ugly fix to include the asset code until the inheritance bug is fixed.
