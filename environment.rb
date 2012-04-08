@@ -9,6 +9,12 @@ puts "Starting in #{ENV['RACK_ENV']} mode.."
 Dir.glob(%w{lib/** helpers models}.map! {|d| File.join d, '*.rb'}).each {|f| require_relative f}
 
 class Controller < Sinatra::Base
+
+  # Load Configuration Variables  
+  @_config = Hashie::Mash.new YAML.load_file('./config/config.yaml')[ENV['RACK_ENV'].to_s]
+  def self.Settings
+    @_config
+  end
   
   register Sinatra::Flash
   helpers  Sinatra::UserAgentHelpers
@@ -19,13 +25,7 @@ class Controller < Sinatra::Base
   set :public_folder,   'public'
   set :erubis,          :escape_html => true
   set :sessions,        true
-  set :session_secret,  'PUT SOMETHING HERE'
-
-  # Load Configuration Variables  
-  @_config = Hashie::Mash.new YAML.load_file('./config/config.yaml')[ENV['RACK_ENV'].to_s]
-  def self.Settings
-    @_config
-  end
+  set :session_secret,  Settings.session_secret
 
   # Development Specific Configuration
   configure :development do
@@ -40,7 +40,6 @@ class Controller < Sinatra::Base
 
   # Production Specific Configuration
   configure :production do
-
     Bundler.require :production
   end
 
@@ -55,12 +54,12 @@ class Controller < Sinatra::Base
 
   # Initialize MongoID
   Mongoid.load!(File.join(settings.root,"config","mongoid.yaml"))
-  Mongoid.logger = Logger.new($stdout, :info)
+  Mongoid.logger = Logger.new($stdout, :info) if ENV['RACK_ENV'] == "development"
 
   # Initialize Redis and Resque
   configure do
     redis_config = URI.parse(YAML.load_file(File.join(settings.root,"config","redis.yaml"))[ENV['RACK_ENV']]['redis_url'])
-    REDIS = Redis.new(:host => redis_config.host, :port => redis_config.port, :password => redis_config.password)
+    REDIS = Redis.new(host: redis_config.host, port: redis_config.port, password: redis_config.password)
     Resque.redis = REDIS
   end
 

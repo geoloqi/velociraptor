@@ -1,5 +1,6 @@
 defaults: &defaults  
   title: Application Framework
+  session_secret: 'PUT SOMETHING HERE'
 
 development:  
   <<: *defaults

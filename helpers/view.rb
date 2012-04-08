@@ -1,5 +1,6 @@
 class Controller < Sinatra::Base
-  helpers do 
+  helpers do
+
     def checked_if(boolean)
       boolean == true ? 'checked' : ''
     end
@@ -16,7 +17,9 @@ class Controller < Sinatra::Base
       end
     end
 
-    def full_title(value); @_title = value end
+    def full_title(value); 
+      @_title = value 
+    end
 
     def description(*value)
       unless value.empty?
@@ -26,7 +29,9 @@ class Controller < Sinatra::Base
       end
     end
 
-    def mobile_view(bool) @_mobile = bool || false end
+    def mobile_view(bool) 
+      @_mobile = bool || false 
+    end
 
     def viewport
       '<meta name="viewport" content="width=device-width,initial-scale=1">' if @_mobile
