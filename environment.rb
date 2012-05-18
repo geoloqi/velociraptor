@@ -25,7 +25,7 @@ class Controller < Sinatra::Base
   set :public_folder,   'public'
   set :erubis,          :escape_html => true
   set :sessions,        true
-  set :session_secret,  Settings.session_secret
+  set :session_secret,  @_config.session_secret
 
   # Development Specific Configuration
   configure :development do
@@ -62,7 +62,6 @@ class Controller < Sinatra::Base
     REDIS = Redis.new(host: redis_config.host, port: redis_config.port, password: redis_config.password)
     Resque.redis = REDIS
   end
-
 end
 
 # Require Controllers
