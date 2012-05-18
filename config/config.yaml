@@ -1,5 +1,5 @@
 defaults: &defaults  
-  title: Application Framework
+  title: Raptor
   session_secret: 'PUT SOMETHING HERE'
 
 development:  

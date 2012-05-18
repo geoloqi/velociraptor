@@ -1,15 +1,11 @@
-defaults: &defaults  
-  redis_url: http://localhost:6379
-
 development:  
-  <<: *defaults
+  redis_url: http://localhost:6379
+  namespace: framework-dev
 
 test:  
-    <<: *defaults
-
-staging:  
-    <<: *defaults
+  redis_url: http://localhost:6379
+  namespace: framework-test
 
 production:  
-    <<: *defaults
-
+  redis_url: <%= ENV['REDISTOGO_URL'] %>
+  namespace: framework
