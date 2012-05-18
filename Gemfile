@@ -13,11 +13,12 @@ gem "rake",                                 :require => nil
 gem "hashie",               "1.2.0"
 gem "json"
 
-gem "redis"
-gem "resque",               "~> 1.19.0"
-gem "resque-scheduler",     "~> 2.0.0.e"
+gem "redis",								"~> 2.2.2"
+gem "resque",               "~> 1.20.0"
+gem "resque-scheduler",     "~> 2.0.0"
+
 gem "foreman",              "~> 0.41.0"
-gem "mongoid",              "~> 2.3"
+gem "mongoid",              "~> 2.4.10"
 gem "bson_ext",             "~> 1.5.2"
 gem "mongoid-tree",                       :require => "mongoid/tree"
 gem "omniauth"    

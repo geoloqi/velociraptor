@@ -1,12 +1,12 @@
 development:  
   host: localhost
   port: 27017
-  database: framework-dev
+  database: framework
 
 test:  
   host: localhost
   port: 27017
-  database: framework-test
+  database: framework
 
 production:
   uri: <%= ENV['MONGOHQ_URL'] %>

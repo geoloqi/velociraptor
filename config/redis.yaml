@@ -1,9 +1,9 @@
 development:  
-  redis_url: http://localhost:6379
+  redis_url: http://127.0.0.1:6379
   namespace: framework-dev
 
 test:  
-  redis_url: http://localhost:6379
+  redis_url: http://127.0.0.1:6379
   namespace: framework-test
 
 production:  

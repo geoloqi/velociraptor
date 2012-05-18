@@ -1,11 +1,13 @@
 require './environment.rb'
+# Resque tasks
 require 'resque/tasks'
 require 'resque_scheduler/tasks'
 
 desc "Setup Resque"
 task "resque:setup" do
-  ENV['QUEUE'] = '*'
-  require 'resque/scheduler' 
+  require 'resque'
+  require 'resque_scheduler'
+  require 'resque/scheduler'
   Resque.schedule = YAML.load_file('./config/resque_schedule.yaml')
 end
 
