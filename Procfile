@@ -1,4 +1,4 @@
 web:        bundle exec rackup -p $PORT
-worker:     bundle exec rake resque:work --trace
+worker:			QUEUE=* bundle exec rake environment resque:work
 scheduler:  bundle exec rake resque:scheduler --trace
 #resque:    bundle exec resque-web -p 8282

@@ -24,7 +24,7 @@ module Assets
       css_compression :sass
 
       # Prebuild assets in prodctions
-      prebuild ENV['RACK_ENV'] == 'production'
+      #prebuild ENV['RACK_ENV'] == 'production'
     }
   end
 end
