@@ -5,7 +5,7 @@ map '/' do
   run Controller
 end
 
-map '/redis' do
+map '/resque' do
 	run Resque::Server.new
 end
 
