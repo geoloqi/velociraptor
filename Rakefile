@@ -23,12 +23,7 @@ task "resque:setup" do
   require 'resque'
   require 'resque_scheduler'
   require 'resque/scheduler'
-  path = File.join(File.dirname(__FILE__),"config","redis.yaml")
-  file = File.read(path)
-  erb = ERB.new(file).result
-  yaml = YAML.load(erb)[ENV['RACK_ENV']]['redis_url']
-  redis_config = URI.parse(yaml)
-  REDIS = Redis.new(host: redis_config.host, port: redis_config.port, password: redis_config.password)
+  REDIS = Redis.new_from_yaml(File.join(File.dirname(__FILE__),"config","redis.yaml"));
   Resque.redis = REDIS
   Resque.schedule = YAML.load_file('./config/resque_schedule.yaml')
 end

@@ -37,7 +37,6 @@ class Controller < Sinatra::Base
   configure :test do
     Bundler.require :test
   end
-
   # Production Specific Configuration
   configure :production do
     Bundler.require :production
@@ -58,12 +57,13 @@ class Controller < Sinatra::Base
 
   # Initialize Redis and Resque
   configure do
-    path = File.join(settings.root,"config","redis.yaml")
-    file = File.read(path)
-    erb = ERB.new(file).result
-    yaml = YAML.load(erb)[ENV['RACK_ENV']]['redis_url']
-    redis_config = URI.parse(yaml)
-    REDIS = Redis.new(host: redis_config.host, port: redis_config.port, password: redis_config.password)
+    #path = File.join(settings.root,"config","redis.yaml")
+    #file = File.read(path)
+    #erb = ERB.new(file).result
+    #yaml = YAML.load(erb)[ENV['RACK_ENV']]['redis_url']
+    #redis_config = URI.parse(yaml)
+    #REDIS = Redis.new(host: redis_config.host, port: redis_config.port, password: redis_config.password)
+    REDIS = Redis.new_from_yaml(File.join(settings.root,"config","redis.yaml"));
     Resque.redis = REDIS
   end
 end
