@@ -6,14 +6,8 @@ map '/' do
 end
 
 
-map '/resque' do
-use Rack::Auth::Basic, "Protected Area" do |username, password|
-  if(username == 'foo' && password == 'bar'){
-		run Resque::Server.new
-	}
-end
-
-
+map '/resque' do	
+	run Resque::Server.new
 end
 
 Controller.controller_names.each do |controller_name|
