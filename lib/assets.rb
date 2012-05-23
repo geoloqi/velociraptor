@@ -16,7 +16,7 @@ module Assets
       # Setup a bundle of CSS
       css :main_css, [
         #'/css/reset.css',
-        #'/css/style.css'
+        '/css/screen.css'
       ]
       
       # Set Compressors

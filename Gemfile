@@ -4,8 +4,11 @@ gem "sinatra-flash",        "0.3.0",        :require => "sinatra/flash"
 gem "sinatra-support",      "1.2.0",        :require => "sinatra/support"
 gem "sinatra-assetpack",                    :require => "sinatra/assetpack", :git => "git://github.com/rstacruz/sinatra-assetpack.git"
 gem "yui-compressor",                       :require => "yui/compressor"
-gem "sass",									"~> 3.1.12"
-#gem "rb-fsevent",           "~> 0.4.3.1"
+gem "sass", 								"3.2.0.alpha.237"
+gem "compass", 							"~> 0.12.1"
+gem "susy", 								"~> 1.0.rc.0"
+gem "compass-normalize-plugin", "~> 0.3.0"
+gem "rb-fsevent",						"~> 0.9.1"
 
 
 gem "erubis",               "2.7.0"

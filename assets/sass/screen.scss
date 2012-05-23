@@ -1,0 +1,37 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// Reset --------------------------------------------------------------
+@import "normalize";
+@include normalize;
+
+// Settings --------------------------------------------------------------
+// Susy & Compass use HTML hacks to support IE 6 and 7. You can turn that off:
+$legacy-support-for-ie6 : false;
+$legacy-support-for-ie7 : false;
+
+// Font Sizes --------------------------------------------------------------
+$relative-font-sizing : true;
+$base-font-size       : 16px;
+$base-line-height     : 24px;
+
+// Grid --------------------------------------------------------------
+$total-cols         : 24;
+$col-width          : 30px;
+$gutter-width       : 10px;
+$side-gutter-width  : 10px;
+
+@import "susy";
+
+body {
+	@include grid-background($total-cols, $col-width, $gutter-width, $base-line-height, $side-gutter-width, $force-fluid: true);
+	@include establish-baseline(16px);
+}
+
+h1 {
+	@include adjust-font-size-to(48px);
+}
+
+@include establish-baseline;
