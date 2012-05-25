@@ -11,7 +11,11 @@
     <%= viewport %>
     <link rel="author" href="/humans.txt">
     <%= js :main_js %>
-    <%= css :main_css %>
+    <%= css :print, :media => 'print' %>
+    <%= css :screen, :media => 'screen' %>
+    <!--[if IE]>
+      <%= css :ie, :media => 'screen' %>
+    <![endif]-->
   </head>
 
   <body class="<%= browser.body_class %> <%= path_class %>">

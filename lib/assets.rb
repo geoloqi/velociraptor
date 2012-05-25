@@ -14,17 +14,24 @@ module Assets
       ]
 
       # Setup a bundle of CSS
-      css :main_css, [
-        #'/css/reset.css',
+      css :screen, [
         '/css/screen.css'
+      ]
+
+      css :print, [
+        '/css/print.css'
+      ]
+      
+      css :id, [
+        '/css/ie.css'
       ]
       
       # Set Compressors
-      js_compression  :yui, :munge => true
+      js_compression  :jsmin
       css_compression :sass
 
       # Prebuild assets in prodctions
-      #prebuild ENV['RACK_ENV'] == 'production'
+      prebuild ENV['RACK_ENV'] == 'production'
     }
   end
 end
