@@ -30,7 +30,6 @@ desc "Alias `resque:work` to `jobs:work`"
 task "jobs:work" => "resque:work"
 
 namespace :compass do
-	
 	desc "Watch Compass project in `/assets` for changes"
 	task :watch do
 		`bundle exec compass watch ./assets`
@@ -40,7 +39,6 @@ namespace :compass do
 	task :compile do
 		`bundle exec compass compile ./assets`
 	end
-
 end
 
 task :default do

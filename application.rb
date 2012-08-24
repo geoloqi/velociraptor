@@ -27,6 +27,14 @@ class Application < Sinatra::Base
   def self.Config
     @@config
   end
+
+  def self.production?
+    ENV['RACK_ENV'] == 'production'
+  end
+
+  def self.develpoment?
+    ENV['RACK_ENV'] == 'development'
+  end
   
   register Sinatra::Flash
   helpers  Sinatra::UserAgentHelpers
