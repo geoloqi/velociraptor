@@ -1,11 +1,12 @@
-class Controller < Sinatra::Base
+class Application < Sinatra::Base
 
   # Put Routes Here
   get "/" do
     title "Home Page"
     description "An application framework with Sinatra, MongoID, and Redis"
-    @message = "Hello visitor #" + Counter.increment.to_s + " the CRON has been run " + Counter.cron.to_s || "0" + " times"
-    Resque.enqueue(Counter)
+    add_js "application"
+    add_css "screen"
+    @message = "Hello visitor ##{Counter.increment.to_s} the CRON has been run #{Counter.cron.to_s} times"
     erb :index
   end
 

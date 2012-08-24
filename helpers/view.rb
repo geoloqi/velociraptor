@@ -1,4 +1,4 @@
-class Controller < Sinatra::Base
+class Application < Sinatra::Base
   helpers do
 
     def checked_if(boolean)
@@ -10,15 +10,17 @@ class Controller < Sinatra::Base
     end
 
     def title(*value)
-      unless value.empty?
-        @_title = "#{value.first} - #{Controller.Settings.title}"
+      if @_title.blank?
+        @_title = "#{value.first} - #{Application.Config.title}" 
+      elsif !@_full_title.blank?
+        "<title>#{@_full_title}</title>"
       else
-        "<title>#{@_title} - #{Controller.Settings.title}</title>"
+        "<title>#{@_title} - #{Application.Config.title}</title>"
       end
     end
 
-    def full_title(value); 
-      @_title = value 
+    def full_title(*value); 
+      @_full_title = value.first
     end
 
     def description(*value)

@@ -1,12 +1,13 @@
-development:  
-  host: localhost
-  port: 27017
-  database: framework
-
-test:  
-  host: localhost
-  port: 27017
-  database: framework
-
+development:
+  sessions:
+    default:
+      database: mongoid
+      hosts:
+        - localhost:27017
 production:
-  uri: <%= ENV['MONGOHQ_URL'] %>
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+    options:
+      skip_version_check: true
+      safe: true

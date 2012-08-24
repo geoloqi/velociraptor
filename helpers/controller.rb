@@ -1,4 +1,4 @@
-class Controller < Sinatra::Base
+class Application < Sinatra::Base
   helpers do 
 
     # Controller Helpers Here

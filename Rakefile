@@ -1,5 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 Encoding.default_internal = 'UTF-8'
+Encoding.default_external = 'UTF-8'
+$stdout.sync = true
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require
@@ -39,4 +41,9 @@ namespace :compass do
 		`bundle exec compass compile ./assets`
 	end
 
+end
+
+task :default do
+  puts "All available rake tasks"
+  system('rake -T')
 end
