@@ -4,7 +4,7 @@ source :rubygems
 gem "sinatra",              "1.3.2",        :require => "sinatra/base"
 gem "sinatra-flash",        "0.3.0",        :require => "sinatra/flash"
 gem "sinatra-support",      "1.2.2",        :require => "sinatra/support"
-gem "sinatra-contrib", "~> 1.3.1"
+gem "sinatra-contrib",      "~> 1.3.1"
 
 # Sass/Compass
 gem "sass",                 "~> 3.2.1"
@@ -47,9 +47,9 @@ gem "gauges",               "~> 0.2.1"
 
 # Authentication
 gem "omniauth"    
-gem "omniauth-twitter", "~> 0.0.12"
-gem "omniauth-facebook", "~> 1.4.1"
-gem "bcrypt-ruby",                        :require => "bcrypt"
+gem "omniauth-twitter",     "~> 0.0.12"
+gem "omniauth-facebook",    "~> 1.4.1"
+gem "bcrypt-ruby",          :require => "bcrypt"
 
 # Sprockets
 gem 'sprockets'
@@ -65,9 +65,9 @@ end
 
 group :test do
   gem "minitest"
-  gem "rack-test",                :require => "rack/test"
+  gem "rack-test",          :require => "rack/test"
   gem "webmock"      
-  gem "simplecov",  :require => nil
+  gem "simplecov",          :require => nil
 end
 
 group :production do
