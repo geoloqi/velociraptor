@@ -1,1 +1,7 @@
 <h1><%= @message %></h1>
+
+<div style="width: 200px;">
+<pre><code>{
+  askjf: daskhfladsfjalksf;kajflsdkfjkasdf
+}</code></pre>
+</div>
