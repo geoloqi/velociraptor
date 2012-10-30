@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/patrickarlt/formula-framework.git
-  revision: cb1ca8a3e119ab4820c0cdbaca2d9d11052a1e55
-  specs:
-    formula-framework (0.0.1.a.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -98,7 +92,6 @@ PLATFORMS
 DEPENDENCIES
   compass (~> 0.12.2)
   erubis (= 2.7.0)
-  formula-framework!
   hashie (= 1.2.0)
   heroku
   highline (~> 1.6.13)

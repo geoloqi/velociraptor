@@ -9,7 +9,6 @@ gem "sinatra-contrib",      "~> 1.3.1"
 # Sass/Compass
 gem "sass",                 "~> 3.2.1"
 gem "compass",              "~> 0.12.2"
-gem "formula-framework",    :git => "git://github.com/patrickarlt/formula-framework.git", :require => "formula"
 
 # Templating
 gem "erubis",               "2.7.0"
