@@ -1,0 +1,16 @@
+defaults: &defaults  
+  title: Application Framework
+  session_secret: 'PUT SOMETHING HERE'
+
+development:  
+  <<: *defaults
+
+test:  
+  <<: *defaults
+
+staging:  
+  <<: *defaults
+
+production:  
+  <<: *defaults
+  google_analytics: 'PUT SOMETHING HERE'

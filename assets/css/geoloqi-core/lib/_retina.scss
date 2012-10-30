@@ -1,0 +1,11 @@
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  #logo {
+    @include image-replace("#{$base-url}/img/logo-block@2x.png", 30px, 34px, #222);
+    background-size:70% auto;
+    background-position: center center;
+  }
+  #logo-footer {
+    background: url("#{$base-url}/img/logo-footer@2x.png") no-repeat 0 0;
+    background-size:100% auto;
+  }
+}

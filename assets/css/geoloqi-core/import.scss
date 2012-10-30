@@ -1,0 +1,44 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// CSS3 Helpers --------------------------------------------------------------
+@import "compass";
+
+// Settings --------------------------------------------------------------
+// Susy & Compass use HTML hacks to support IE 6 and 7. You can turn that off.
+
+$legacy-support-for-ie6 : false;
+$legacy-support-for-ie7 : false;
+
+// Font Sizes --------------------------------------------------------------
+
+$relative-font-sizing : true;
+$base-font-size       : 16px;
+$base-line-height     : 24px;
+
+// Grid --------------------------------------------------------------
+$total-columns  : 24;
+$column-width   : 1.875em;
+$gutter-width   : 0.625em;
+$grid-padding   : $gutter-width;
+
+@import "susy";
+
+// Break Points --------------------------------------------------------------
+
+$screen-large 						: 1367px 24; 				// width > 1367px ex. all macs, smaller high quality laptops over 13"+
+$screen-normal			 			: 24 1366px;	// width 1025-1281px covers most things new cheap windows laptops, macbook airs, ect
+$screen-tablet-landscape	: 24 1024px;  // width 769-1024px covers most tablets in landscape (ipad), netbooks, really crappy old screens
+$screen-tablet-portrait		: 16 768px;   // width 481-768px covers ipad in portrait, larger android phones
+$screen-smartphone				: 6 480px;    // width 769-1024px smaller phones in portrait and landscape (iphone and small androids)
+
+// Debug --------------------------------------------------------------
+
+$enable-grids		: false;
+
+// Includes --------------------------------------------------------------
+
+@import "lib/_preboot.scss";
+@import "lib/_mixins.scss";

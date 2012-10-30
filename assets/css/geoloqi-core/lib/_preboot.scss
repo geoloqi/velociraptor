@@ -1,0 +1,49 @@
+$base-url: "/geoloqi-core/assets";
+
+// Font Stacks
+$bodyFont: "Lucida Grande", "Segoe UI", Arial, Verdana, sans-serif;
+$PTSans: "PTSans";
+
+// Predefined Grays
+$white:               #ffffff;
+$offWhite:            hsl(0, 0, 98); // #fafafa
+$lightestGray:	      hsl(0, 0, 92); // ebebeb
+$lighterGray:         hsl(0, 0, 80); // cccccc
+$lightGray:           hsl(0, 0, 65); // a6a6a6
+$gray:                hsl(0, 0, 50); // 808080
+$darkGray:            hsl(0, 0, 35); // 595959
+$darkerGray:          hsl(0, 0, 20); // 333333
+$darkestGray: 	      hsl(0, 0, 12); // 1f1f1f
+$offBlack:            hsl(0, 0, 2);  // 050505
+$black:               #000000;
+$geoloqiGray:	 				#404040;
+
+// Selection Colors
+$selectionColor:      #fff;
+$selectionBackground: #fe57a1;
+
+// Buttons
+$darkBlue: 						#27adec;
+$lightBlue: 					#55c8fe;
+
+$lightOrange: 				#f59555;
+$darkOrange: 					#e37b2f;
+
+$lightRed: 						#ec5555;
+$darkRed: 						#de2c2c;
+
+$lightPink: 					#ed54ba;
+$darkPink: 						#de3ea8;
+
+$lightPurple: 				#9253d5;
+$darkPurple: 					#7641b0;
+
+$lightYellow: 				#e2cf1b;
+$darkYellow: 					#d3c223;
+
+$lightGreen: 					#89ce37;
+$darkGreen: 					#79b335;
+
+// Links
+$linkColor:           $darkBlue;
+$linkHover:           $lightBlue;

@@ -1,0 +1,204 @@
+input[type="submit"], .btn, button {
+	@include adjust-font-size-to(16px);
+	@include apply-side-rhythm-border("top",1px, .35, 16px, solid);
+	@include apply-side-rhythm-border("bottom",1px, .35, 16px, solid);
+	@include apply-side-rhythm-border("left",1px, .75, 16px, solid);
+	@include apply-side-rhythm-border("right",1px, .75, 16px, solid);
+	@include border-radius(4px);
+	@include button-color($lighterGray, $lightGray);
+	@include box-shadow(inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 2px rgba(0,0,0,0.1));
+	border-width:1px !important; // compass border mixins like to make borders to small
+	color: $white;
+	display: inline-block;
+	
+	// states --------------------------------------------------------------------
+	&:hover {
+		text-decoration:none;
+    color:$white;
+    @include box-shadow(none);
+    &:disabled, &.disabled {
+			&:hover {
+				@include box-shadow(inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 2px rgba(0,0,0,0.1));
+				@include button-color-disabled($lighterGray, $lightGray);
+			}
+		}
+	}
+
+	&:disabled, &.disabled {
+		@include opacity(.5);
+		&:hover {
+			cursor: default;
+		}
+	}
+
+	// colors --------------------------------------------------------------------
+	&.primary, &.blue {
+		@include button-color($lightBlue, $darkBlue);
+		&:disabled, &.disabled {
+			&:hover {
+				@include button-color-disabled($lightBlue, $darkBlue);
+			}
+		}
+	}
+
+	&.light {
+		background: $offWhite;
+		border-color:$lighterGray;
+		color:$lightGray;
+		text-shadow: none;
+		&:disabled, &.disabled {
+			&:hover {
+				background: $offWhite;
+				border-color:$lighterGray;
+				color:$lightGray;
+				text-shadow: none;
+			}
+		}
+		&:hover {
+			background: $lightestGray;
+		};
+		&[class^="hover-"]:hover, &[class*=" hover-"]:hover {
+			color: $white;
+		}
+		&.hover-blue:hover{
+			background:$darkBlue;
+			border-color:$darkBlue;
+		}
+		&.hover-green:hover{
+			background: $darkGreen;
+			border-color:$darkGreen;
+		}
+		&.hover-orange:hover{
+			background: $darkOrange;
+			border-color:$darkOrange;
+		}
+		&.hover-red:hover{
+			background: $darkRed;
+			border-color:$darkRed;
+		}
+	}
+
+	&.secondary, &.orange {
+		@include button-color($lightOrange, $darkOrange);
+		&:disabled, &.disabled {
+			&:hover {
+				@include button-color-disabled($lightOrange, $darkOrange);
+			}
+		}
+	}
+
+	&.danger, &.delete, &.cancel, &.red {
+		@include button-color($lightRed, $darkRed);
+		&:disabled, &.disabled {
+			&:hover {
+				@include button-color-disabled($lightRed, $darkRed);
+			}
+		}
+	}
+
+	&.green {
+		@include button-color($lightGreen, $darkGreen);
+		&:disabled, &.disabled {
+			&:hover {
+				@include button-color-disabled($lightGreen, $darkGreen);
+			}
+		}
+	}
+
+	// sizes ---------------------------------------------------------------------
+	&.small {
+		@include adjust-font-size-to(14px);
+		@include apply-side-rhythm-border("top",1px, .3, 16px, solid);
+		@include apply-side-rhythm-border("bottom",1px, .2, 16px, solid);
+		@include apply-side-rhythm-border("left",1px, .75, 16px, solid);
+		@include apply-side-rhythm-border("right",1px, .75, 16px, solid);
+	}
+
+	&.large {
+		@include adjust-font-size-to(18px);
+		@include apply-side-rhythm-border("left",1px, 1, 16px, solid);
+		@include apply-side-rhythm-border("right",1px, 1, 16px, solid);
+	}
+
+	&.x-large {
+		@include adjust-font-size-to(24px);
+		font-family: $PTSans;
+		@include apply-side-rhythm-border("top",1px, .25, 16px, solid);
+		@include apply-side-rhythm-border("bottom",1px, .25, 16px, solid);
+		@include apply-side-rhythm-border("left",1px, 1, 16px, solid);
+		@include apply-side-rhythm-border("right",1px, 1, 16px, solid);
+	}
+
+	// block icon ----------------------------------------------------------------s
+	&.block {
+		text-align: center;
+		display: block;
+		&[class^="icon-"]::before, &[class*=" icon-"]::before {
+			font-size: 135%;
+			position: static;
+			padding: 0;
+			display: block;
+		}
+		&[class^="icon-"], &[class*=" icon-"] {
+			padding-left: .75em;
+			padding-right: .75em;	
+		}
+	}
+
+	// icons ---------------------------------------------------------------------
+	&[class^="icon-"]::before, &[class*=" icon-"]::before {
+		padding-right: .35em;
+		font-weight:normal !important;
+	}
+
+	&.fill {
+		@include box-sizing(border-box);
+		display: block;
+		width: 100%;
+		text-align: center;
+		padding-left: 0;
+		padding-right: 0;
+		&[class^="icon-"]::before, &[class*=" icon-"]::before {
+			position: relative;
+			top: 1px;
+			left: auto;
+			padding-right:.35em;
+		}
+	}
+
+	&.transparent {
+		background: none;
+		border-color: transparent;
+		color: $linkColor;
+		@include box-shadow(none);
+		text-shadow: none;
+		&:disabled, &.disabled {
+			&:hover {
+				background: none;
+				border-color: transparent;
+				color: $linkHover;
+			}
+		}
+	}
+}
+
+// button group ----------------------------------------------------------------
+.btn-group {
+	@include clearfix();
+	input[type="submit"], .btn, button {
+		min-width: 48px;
+		@include border-radius(0px);
+		border-left-width:0px;
+		display:block;
+		float:left;
+		&:first-child {
+			@include border-top-left-radius(4px);
+			@include border-bottom-left-radius(4px);
+			border-left-width:1px;
+		}	
+		&:last-child {
+			@include border-top-right-radius(4px);
+			@include border-bottom-right-radius(4px);
+		}
+	}
+}

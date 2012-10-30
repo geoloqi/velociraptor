@@ -1,0 +1,226 @@
+// headers ---------------------------------------------------------------------
+hgroup {
+	> :first-child{
+		@include trailer(0);
+	}
+	> :last-child{
+		@include leader(0);
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: $PTSans;
+	color: $darkestGray;
+	margin: 0;
+	&.divider {
+		border-color: $lighterGray;
+	}
+}
+
+h1 {
+	@include adjust-font-size-to(48px);
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 48px);
+	}
+	&.small {
+		@extend h4;
+	}
+}
+
+h2 {
+	@include adjust-font-size-to(36px);
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 36px);
+	}
+}
+
+h3 {
+	@include adjust-font-size-to(24px);
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 24px);
+	}
+}
+
+h4 {
+	@include adjust-font-size-to(18px);
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 18px);
+	}
+}
+
+h5 {
+	@include adjust-font-size-to(16px);
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 16px);
+	}
+}
+
+h6 {
+	@include adjust-font-size-to(16px);
+	color: $darkerGray;
+	&.divider {
+		@include apply-side-rhythm-border(bottom ,1px, 0, 16px);
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	&.compress {
+		@include leader(0);
+		@include trailer(0);
+	}
+	&.compress-top {
+		@include leader(0);
+	}
+	&.compress-bottom {
+		@include trailer(0);
+	}
+	&.compress-half {
+		@include leader(.5);
+		@include trailer(.5);
+	}
+	&.compress-top-half {
+		@include leader(.5);
+	}
+	&.compress-bottom-half {
+		@include trailer(.5);
+	}
+}
+
+// blockquote ------------------------------------------------------------------
+
+blockquote {
+	margin-left:0;
+	border-color: $lighterGray;
+	@include adjust-font-size-to(14px);
+	@include apply-side-rhythm-border(left, 5px, 1, 14px);
+	@include leader(1);
+	@include trailer(1);
+}
+
+// paragraphs ------------------------------------------------------------------
+
+p {
+	@include trailer(1);
+	@include adjust-font-size-to(14px);
+	margin-top:0;
+	&.large {
+		@include adjust-font-size-to(18px);
+	}
+	&.small {
+		@include adjust-font-size-to(13px);
+	}
+}
+
+// links -----------------------------------------------------------------------
+
+a {
+	color: $linkColor;
+	outline: none;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+	&:hover, &:focus {
+		color: $linkHover;
+		cursor: pointer;
+		&[class^="icon-"], &[class*=" icon-"] {
+			text-decoration: none;
+		}
+	}
+}
+
+// lists -----------------------------------------------------------------------
+
+nav {
+	ul, ol {
+		padding-left:0;		
+		list-style: none;
+	}	
+}
+
+ul, ol {
+	&.unstyled {
+		padding-left:0;
+		list-style: none;
+	}
+}
+
+ul, ol {
+	@include adjust-font-size-to(14px);
+	@include trailer(1);
+	padding-left: 1.25em;
+	margin-top:0;
+	&.unstyled {
+		list-style: none;
+	}
+}
+
+dl {
+	@include adjust-font-size-to(14px);
+	margin-top:0;
+	dt {
+		@include adjust-font-size-to(18px);
+		color: $darkestGray;
+		font-family: $PTSans;
+		font-weight:700;
+	}
+	dd {
+		margin: 0;
+		@include trailer(1);
+	}
+	&.horizontal {
+		@include clearfix;
+		dt, dd {
+			@include adjust-font-size-to(16px);
+			@include trailer(0);
+			float:left;
+		}
+		dt {
+			clear:left;
+		}
+		dd {
+			padding-left:.5em;
+		}
+	}
+}
+
+// code ------------------------------------------------------------------------
+
+pre {
+  margin: 0;  
+}
+
+code {
+	@include border-radius(4px);
+  @include rhythm-borders(1px, .5, 14px);
+  @include adjust-font-size-to(12px);
+  border-color: $lightestGray;
+  line-height: 1.5em;
+  border-width: 1px;
+  overflow-x: scroll;
+  overflow-y: auto;
+  white-space: pre;
+  word-wrap: normal;
+  display: block;
+}
+
+// abbr ------------------------------------------------------------------------
+
+abbr[title] {
+	cursor: help;
+}
+
+// text-helpers ------------------------------------------------------------------------
+
+.align-center, .center-text {
+	text-align: center;
+}
+
+// hr --------------------------------------------------------------------------
+hr {
+	@include margin-leader(1);
+	@include margin-trailer(1);
+	border: none;
+	border-top:1px solid $lighterGray;
+	border-bottom: 1px solid $white;
+}

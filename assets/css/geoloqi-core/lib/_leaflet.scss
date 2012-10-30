@@ -1,0 +1,49 @@
+.leaflet-popup {
+  .leaflet-popup-close-button {
+    @extend .icon-cancel;
+    &:before {
+      font-family: 'IcoMoon';
+      font-style: normal;
+      speak: none;
+    }
+    background:none;
+    width: auto;
+    height: auto;
+    font-size:.5em;
+    color: $lighterGray;
+    &:hover {
+      color: $lightGray;
+      text-decoration: none;
+    };
+  }
+  .leaflet-popup-content-wrapper {
+    @include box-shadow(none);
+    background: transparent;
+    .leaflet-popup-content {
+      margin: 0;
+      .geoloqi-popup-wrapper {
+        @include border-radius(4px);
+        @include box-shadow(inset 0 1px 0 $white, 0 1px 14px #999);
+        background: $offWhite;
+        border: 1px solid $lighterGray;
+        .geoloqi-popup-content {
+          margin:12px;
+        }
+      }
+    }
+  }
+  .leaflet-popup-tip-container{
+    background: none;
+    z-index: 100;
+    top: -2px;
+    .leaflet-popup-tip {
+      background: $offWhite;
+      border-top: none;
+      border-right: none;
+      border-left: 1px solid $lightGray;
+      border-bottom: 1px solid $lightGray;
+      width:10px;
+      height:10px;
+    }
+  }
+}

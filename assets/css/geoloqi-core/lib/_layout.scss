@@ -1,0 +1,453 @@
+// sticky footer ---------------------------------------------------------------
+
+@import "compass/layout/sticky-footer";
+
+$footer-height: 220px;
+
+@include sticky-footer($footer-height, "#wrapper", "#push", "#footer");
+
+// layout ----------------------------------------------------------------------
+#page {
+	@include margin-leader(4);
+	@include margin-trailer(2);
+	@if $enable-grids {
+		@include susy-grid-background;
+	}
+	&.no-top {
+		margin-top:3.5em;
+	}
+}
+
+.container {
+	@include container();
+	@if $enable-grids {
+		@include susy-grid-background;
+	}
+}
+
+// header ----------------------------------------------------------------------
+
+$header-height: 3.5em;
+
+#header {
+	@include clearfix();
+	background: $darkestGray;
+	@include background(linear-gradient($darkerGray, $offBlack));
+  @include box-shadow(0 1px 5px rgba(0, 0, 0, 0.3));
+	@include position(fixed, 0, 0, auto, 0);
+	@include box-sizing(border-box);
+	border-bottom:1px solid $darkerGray;
+	height: $header-height;
+	overflow: visible;
+	z-index: 100;
+	.inner {
+		@include container();
+	}
+}
+
+// header navigation -----------------------------------------------------------
+
+#header {
+	nav {
+		float: left;
+		position: relative;
+		z-index:100;
+		&.secondary {
+			@include float(right);
+			ul {
+				li {
+					&.dropdown {
+						.dropdown-menu {
+							right:0;
+						}
+					}
+				}
+			}
+		}
+		ul {
+			@include adjust-font-size-to(16px);
+			border-right:1px solid $darkerGray;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			float: left;
+			li {
+				float:left;
+				text-shadow:0 1px 0 $darkestGray;
+				a {
+					color: $white;
+					padding: 0 1em;
+					line-height: 4em;
+					font-size:14px;
+					display: block;
+					color: $lightestGray;
+					text-shadow: 0 1px 0 $darkestGray;
+				}
+				&:hover, &:focus, &.active {
+					@include box-shadow(inset -1px 0px 2px rgba(255,255,255,0.05), inset 1px 0px 2px rgba(255,255,255,0.05));
+					background: $darkestGray;
+				}
+				&.dropdown {
+					position: relative;
+					padding-right:.5em;
+					> a {
+						@include arrow-down(4px, $darkGray);
+						&:after {
+							position:absolute;
+							top:49%;
+							right:.25em;
+						}
+					}
+					.dropdown-menu {
+						@include clearfix;
+						@include position(absolute, 99%);
+						background: $darkestGray;
+						border-top: 1px solid $darkerGray;
+						display: none;
+						float: left;
+						clear: both;
+						> :nth-child(1){
+							@include leader(.5);
+						}
+						h3 {
+							@include adjust-font-size-to(16px);
+							@include leader(1);
+							@include trailer(0);
+							@include adjust-leading-to(1);
+							padding-left: .75em;
+							padding-right: .75em;
+							color: $lightestGray;
+						}
+						hr {
+							border-top:1px solid $black;
+							border-bottom:1px solid $darkerGray;
+							border-left:1px solid transparent;
+							border-right:1px solid transparent;
+							@include leader(.5);
+							@include trailer(.5);
+						}
+						ul {
+							margin: 0;
+							padding: 0;
+							width: 172px;
+							@include trailer(.5);
+							li {
+								@include float(none);
+								display: block;
+								clear: both;
+								padding: 0;
+								a {
+									border: none;
+									@include adjust-font-size-to(13px);
+									@include adjust-leading-to(1.5);
+									color: $lightGray;
+									&:hover {
+										color: $white;
+										background: $black;
+									}
+								}
+							}
+						}
+					}
+					&:hover {
+						.dropdown-menu {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// logo ------------------------------------------------------------------------
+
+#logo {
+	@include image-replace("#{$base-url}/img/logo-block.png", 30px, 34px, #222);
+	background-position: center center;
+	padding:.6em .5em .8em;
+	float: left;
+	border-right:1px solid $darkerGray;
+}
+
+#logo-footer {
+	float: left;
+	width: 109px;
+	margin-right: 20px;
+	background: url("#{$base-url}/img/logo-footer.png") no-repeat 0 0;
+	height: 38px;
+	margin-top: 1.25em;
+	text-indent:-9999em;
+	@include at-breakpoint($screen-tablet-landscape){
+		@include hide();
+	}
+	@include at-breakpoint($screen-tablet-portrait){
+		@include hide();
+	}
+	@include at-breakpoint($screen-smartphone){
+		@include hide();
+	}
+}
+
+// site selector ---------------------------------------------------------------
+
+#header #site-selector {
+	background: #222;
+	ul {
+		li {
+			padding-right:0;
+			a {
+				font-size:1.5em;
+				line-height:2.35em;
+				color:white;
+				padding:0 .75em 0 .25em;
+				font-family: $PTSans;
+				font-weight: 700;
+				&:hover {
+					text-decoration:none;
+				}
+			}
+			&.dropdown {
+				.dropdown-menu {
+					ul {
+						width:250px;
+						li {
+							a {
+								font-size:1.25em;
+								line-height:1em;
+								padding:.5em;
+								h6 {
+									@include adjust-font-size-to(14px);
+									@include adjust-leading-to(.5);
+									@include leader(0);
+									@include trailer(0);
+									color: $white;
+								}
+								small {
+									display:block;
+									color: $gray;
+									font-size:.5em;
+									font-family: $bodyFont;
+									font-weight: 500;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// footer ----------------------------------------------------------------------
+
+$common-footer-height: 72px;
+
+#site-footer {
+	background: $darkestGray;
+	@include background(linear-gradient($offBlack, $darkestGray));
+	@include box-shadow(0 -1px 3px rgba(0,0,0,0.10));
+	border-top:1px solid $darkerGray;
+	height:$footer-height - $common-footer-height - 1;
+	nav {
+		@include span-columns(5);
+		color: $lightestGray;
+		ul {
+			margin-bottom: 0;
+		}
+	}
+	h6 {
+		color: $white;
+		margin-top:1em;
+	}
+	a {
+		color: $lightGray;
+		&:hover {
+			color: $lightestGray;
+		}
+	}
+	.apps {
+		@include span-columns(9);
+		@include omega();
+		.ios, .android {
+			@include span-columns(4, 9);
+		}
+		.android {
+			@include pre(1);
+			@include omega();
+		}
+	}
+	.box {
+		margin-top: 1.2em;
+		padding: .5em 1em;
+		@include clearfix();
+		@include background-clip(padding-box);
+		background: $offBlack;
+		@include box-shadow(inset 0 -2px 2px $black, 0 -1px 0 $darkerGray);
+		border-color: $darkerGray;
+		h6 {
+			margin:0;
+		}
+	}
+}
+
+#common-footer {
+	background: $lightestGray;
+	border-top: 1px solid $darkestGray;
+	height: $common-footer-height;
+}
+
+#common-footer, #site-footer {
+	.inner {
+		@include container;
+	}
+}
+
+#footer-menu {
+	@include span-columns(14);
+	@include clearfix;
+	margin-top:1em;
+	color: $lightGray;
+	nav {
+		margin: 0;
+		padding: 0;
+		ul {
+			@include clearfix();
+			@include adjust-font-size-to(12px);
+			list-style:none;
+			margin: 0;
+			padding: 0;
+			li {
+				float: left;
+				margin-right: 1em;
+				a {
+					color: $gray;
+				}
+			}
+		}
+	}
+	small {
+		@include adjust-font-size-to(11px);
+		display: block;
+		a {
+			color: $lightGray;
+			&:hover {
+				color: $lightGray;
+			}
+		}
+	}
+	@include at-breakpoint($screen-tablet-landscape){
+		@include span-columns(15);
+	}
+	@include at-breakpoint($screen-tablet-portrait){
+		@include span-columns(16);
+		margin-top: .5em;
+	}
+	@include at-breakpoint($screen-smartphone){
+		@include span-columns(6);
+		margin-top: 0;
+		nav {
+			ul {
+				li {
+					float: none;
+					width:100%;
+					border-bottom:1px solid $lightGray;
+					a {
+						display:block;
+						padding:.75em 0;
+						width:100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+#social-links {
+	@include span-columns(5 omega);
+	@include clearfix;
+	padding-top: .85em;
+	text-align: right;
+	a {
+		@include adjust-font-size-to(36px);
+		padding:0 0 0 .25em;
+		color: $lightGray;
+		&:hover {
+			color: $gray;
+			text-decoration: none;
+		}
+	}
+	@include at-breakpoint($screen-tablet-portrait){
+		@include span-columns(16);
+		text-align:left;
+		border-bottom: 1px solid $lightGray;
+		padding:.25em 0;
+	}
+	@include at-breakpoint($screen-smartphone){
+		@include span-columns(6);
+		text-align:center;
+		border-bottom: 1px solid $lightGray;
+		padding:.25em 0;
+		a {
+			@include span-columns(2, 6);
+			padding: 0;
+			&:last-of-type {
+				@include omega;
+			}
+		}
+	}
+}
+
+// responsive layout -----------------------------------------------------------
+@include at-breakpoint($screen-tablet-portrait){
+	#footer, #site-footer, #common-footer {
+		height:auto;
+	}
+}
+
+@include at-breakpoint($screen-smartphone){
+	#footer, #site-footer, #common-footer {
+		height:auto;
+	}
+}
+
+@include	at-breakpoint($screen-large){
+	.container {
+		@include container;
+		@if $enable-grids {
+			@include susy-grid-background;
+		}
+	}
+}
+@include	at-breakpoint($screen-normal){
+	.container {
+		@include container;
+		@if $enable-grids {
+			@include susy-grid-background;
+		}
+	}
+}
+@include	at-breakpoint($screen-tablet-landscape){
+	.container {
+		@include container;
+		@if $enable-grids {
+			@include susy-grid-background;
+		}
+	}
+}
+@include	at-breakpoint($screen-tablet-portrait){
+	.container {
+		@include container;
+		@if $enable-grids {
+			@include susy-grid-background;
+		}
+	}
+}
+@include	at-breakpoint($screen-smartphone){
+	.container {
+		@include container;
+		@if $enable-grids {
+			@include susy-grid-background;
+		}
+	}
+}

@@ -1,0 +1,100 @@
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon'; 
+  content: attr(data-icon);
+   speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: 'icomoon';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+.icon-gauge:before { content: "\21"; }
+.icon-announcement:before { content: "\22"; }
+.icon-caution-cone:before { content: "\23"; }
+.icon-lightbulb:before { content: "\24"; }
+.icon-comment:before { content: "\25"; }
+.icon-battery:before { content: "\26"; }
+.icon-laptop:before { content: "\27"; }
+.icon-globe:before { content: "\28"; }
+.icon-graph-bar:before, .icon-graph:before { content: "\29"; }
+.icon-window-alert:before { content: "\2a"; }
+.icon-search:before { content: "\2b"; }
+.icon-tags:before { content: "\2c"; }
+.icon-refresh:before { content: "\2d"; }
+.icon-window-lines:before { content: "\2e"; }
+.icon-book:before { content: "\2f"; }
+.icon-refresh-2:before { content: "\30"; }
+.icon-search-2:before { content: "\31"; }
+.icon-bookmark:before { content: "\32"; }
+.icon-phone:before { content: "\33"; }
+.icon-tag:before { content: "\34"; }
+.icon-support:before { content: "\35"; }
+.icon-settings-2:before { content: "\36"; }
+.icon-rss:before { content: "\37"; }
+.icon-email:before { content: "\38"; }
+.icon-pin-user:before { content: "\39"; }
+.icon-pin-geonote:before { content: "\3a"; }
+.icon-star:before { content: "\3b"; }
+.icon-pin:before { content: "\3c"; }
+.icon-delete:before, .icon-trash-can:before { content: "\3d"; }
+.icon-data:before { content: "\3e"; }
+.icon-unlocked:before { content: "\3f"; }
+.icon-locked:before { content: "\40"; }
+.icon-code:before { content: "\41"; }
+.icon-find:before { content: "\42"; }
+.icon-building:before { content: "\43"; }
+.icon-bug:before { content: "\44"; }
+.icon-grid:before { content: "\45"; }
+.icon-help:before { content: "\46"; }
+.icon-gears:before { content: "\47"; }
+.icon-map-pin:before { content: "\48"; }
+.icon-window-cursor:before { content: "\49"; }
+.icon-list-2:before { content: "\4a"; }
+.icon-window-close:before { content: "\4b"; }
+.icon-alert:before { content: "\4c"; }
+.icon-compass:before { content: "\4d"; }
+.icon-edit:before, .icon-pencil:before { content: "\4e"; }
+.icon-share:before { content: "\4f"; }
+.icon-camera:before { content: "\50"; }
+.icon-exit:before { content: "\51"; }
+.icon-clock:before { content: "\52"; }
+.icon-locate-2:before { content: "\53"; }
+.icon-graph-pie:before { content: "\54"; }
+.icon-analytics:before { content: "\56"; }
+.icon-eye-open:before { content: "\57"; }
+.icon-list:before { content: "\58"; }
+.icon-map-trail:before { content: "\59"; }
+.icon-airplane:before { content: "\5a"; }
+.icon-star-2:before { content: "\5b"; }
+.icon-window-console:before { content: "\5c"; }
+.icon-iphone:before { content: "\5d"; }
+.icon-heart:before { content: "\5e"; }
+.icon-user:before { content: "\5f"; }
+.icon-home:before { content: "\60"; }
+.icon-google-plus:before { content: "\61"; }
+.icon-linked-in:before { content: "\62"; }
+.icon-play:before { content: "\63"; }
+.icon-twitter:before { content: "\64"; }
+.icon-check:before { content: "\65"; }
+.icon-apple:before { content: "\66"; }
+.icon-locate:before { content: "\67"; }
+.icon-tag-2:before { content: "\68"; }
+.icon-plus:before { content: "\69"; }
+.icon-cancel:before { content: "\6b"; }
+.icon-minus:before { content: "\6c"; }
+.icon-github:before { content: "\6d"; }
+.icon-android:before { content: "\6e"; }
+.icon-facebook:before { content: "\6f"; }
+.icon-polyline:before { content: "\70"; }
+.icon-polygon:before { content: "\71"; }
+.icon-pin-geonote-add:before { content: "\55"; }
+.icon-pin-add:before { content: "\6a"; }
+.icon-pin-user-add:before { content: "\72"; }

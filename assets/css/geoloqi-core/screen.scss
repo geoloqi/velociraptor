@@ -1,0 +1,34 @@
+// Reset --------------------------------------------------------------
+//$legacy-support-for-ie: false;
+$legacy-support-for-mozilla: false;
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+
+@import "lib/_normalize.scss";
+
+// Common Geoloqi Core ---------------------------------------------------------
+
+@import "import.scss";
+
+body {
+	@include establish-baseline(16px);
+	background: $white;
+	color: #2e2e2e;
+  margin:0;
+}
+
+// Includes --------------------------------------------------------------
+@import "lib/_preboot.scss";
+@import "lib/_mixins.scss";
+@import "lib/_helpers.scss";
+@import "lib/_fonts.scss";
+@import "lib/_icons.scss";
+@import "lib/_layout.scss";
+@import "lib/_typography.scss";
+@import "lib/_forms.scss";
+@import "lib/_tables.scss";
+@import "lib/_button.scss";
+@import "lib/_header.scss";
+@import "lib/_patterns.scss";
+@import "lib/_leaflet.scss";
+@import "lib/_retina.scss";

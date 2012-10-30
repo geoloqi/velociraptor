@@ -1,0 +1,296 @@
+// form ------------------------------------------------------------------------
+$labelSpan : 5;
+
+form {
+	label {
+		@include leader(1);
+		@include pie-clearfix();
+		clear:both;
+		display:block;
+		&.collapse {
+			@include leader(0);
+		}
+		&.hide-text {
+			> span {
+				@include visuallyhidden;
+			}
+			.input, .input-list {
+				@include pre(0);
+			}
+		}
+		> span {
+			@include span-columns($labelSpan);
+			@include adjust-font-size-to(14px);
+			@include apply-side-rhythm-border(top, 0px, .25, 14px, solid);
+			text-align:right;
+		}
+		.input, .input-list {
+			@include pre($labelSpan);	
+			margin-top:1px;
+		}
+		small {
+			display: block;
+			@include adjust-font-size-to(12px);
+			color: $lightGray;
+		}
+
+		// multpile inputs --------------------------------------------------------
+		.multi-input {
+			@include pre($labelSpan);
+			@include pie-clearfix();
+			.input:last-child {
+				@include float(right);
+			}
+			&.two {
+				.input {
+					@include pre(0);
+					width:49%;
+				}
+				.input:first-child {
+					@include float(left);
+				}
+				.input:last-child {
+					@include float(right);
+				}
+			}
+			&.three {
+				.input {
+					@include pre(0);
+					width:31.5%;
+					@include float-left;
+				}
+				.input:nth-child(2){
+					margin:0 2.5%;
+				}
+				.input:last-child {
+					@include float(right);
+				}
+			}
+			&.four {
+				.input {
+					@include pre(0);
+					width:23.5%;
+					@include float-left;
+				}
+				.input:nth-child(1),.input:nth-child(2),.input:nth-child(3){
+					margin:0 1.75% 0 0;
+				}
+			}
+		}
+	}
+	
+	//adjacent fields --------------------------------------------------------------
+	.adjacent-fields {
+		+ .adjacent-fields {
+			@include leader(1);
+		}
+		@include pie-clearfix();
+		label {
+			@include pre(0);
+			@include leader(0);
+			clear: none;
+		}
+		&.two {
+			label {
+				@include pre(0);
+				width:49%;
+			}
+			label:first-child {
+				@include float(left);
+			}
+			label:last-child {
+				@include float(right);
+			}
+		}
+		&.three {
+			label {
+				@include pre(0);
+				width:31.5%;
+				@include float-left;
+			}
+			label:nth-child(2){
+				margin:0 2.5%;
+			}
+			label:last-child {
+				@include float(right);
+			}
+		}
+		&.four {
+			label {
+				@include pre(0);
+				width:23.5%;
+				@include float-left;
+			}
+			label:nth-child(1),.input:nth-child(2),.input:nth-child(3){
+				margin:0 1.75% 0 0;
+			}
+		}
+	}
+	// input list -------------------------------------------------------------------
+
+	.input-list {
+		@include apply-side-rhythm-border(top, 0px, .25, 14px, solid);
+		ul{
+			@include leader(0);
+			@include trailer(0);
+			padding:0;
+			list-style: none;
+			li {
+				@include pie-clearfix();
+				margin:0;
+				label {
+					@include leader(0);
+					float: left;
+					line-height: 24px;
+					margin: 0;
+					input {
+						float: left;
+					}
+				}
+
+			}
+		}
+	}
+	
+	// actions -------------------------------------------------------------------
+	.actions {
+		@include pre($labelSpan);
+		@include leader(1);
+		& :first-child {
+			@include float-left();
+		};
+		@include pie-clearfix();
+		.secondary {
+			@include adjust-font-size-to(18px);
+			@include rhythm-borders(0px, .5, 18px, solid);
+			@include float-right();
+			&.left {
+				@include float-left();
+				margin-left:.25em;
+			}
+		}	
+	}
+	// stacked -------------------------------------------------------------------
+	&.stacked {
+		label {
+			> span {
+				@include adjust-font-size-to(16px);
+				text-align:left;
+				width:auto;
+			}
+			.input, .input-list {
+				@include pre(0);
+				padding:0;
+				clear:both;		
+			}
+			.multi-input {
+				@include pre(0);
+				clear:both;
+				.input {
+					clear: none;
+				}
+			}
+		}
+		.actions {
+			@include pre(0);
+		}
+	}
+
+	// single --------------------------------------------------------------------
+	&.single {
+		position: relative;
+		label {
+			@include leader(0);
+		}
+		.btn, button, input[type="submit"] {
+			@include adjust-font-size-to(14px);
+			@include rhythm-borders(1px, .25, 14px, solid);
+			@include box-shadow(none);
+			@include box-sizing(border-box);
+			@include border-top-left-radius(0);
+			@include border-bottom-left-radius(0);
+			height: rhythm(1.5, 14px);
+			border-width:1px;
+			padding-left: .75em;
+			padding-right: .75em;
+			position:absolute;
+			top: 0;
+			right: 0;
+		}
+		.actions {
+			@include leader(0);
+		}
+	}
+}
+
+// reset outlines --------------------------------------------------------------
+input, label, select {
+	&:focus {
+		outline: none;
+	}
+}
+
+// full width inputs -----------------------------------------------------------
+input, select, textarea {
+	@include box-sizing(border-box);
+	width:100%;
+}
+
+// checkboxes and radio buttons ------------------------------------------------
+input[type="checkbox"], input[type="radio"] {
+	display:block;
+	margin:5px 4px 0 1px;
+	width:auto;
+}
+
+// input styles ----------------------------------------------------------------
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+input[type="tel"],
+select,
+textarea {
+	@include adjust-font-size-to(14px);
+	@include rhythm-borders(1px, .25, 14px, solid);
+	@include box-sizing(border-box);
+	@include box-shadow(0 1px 1px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(0,0,0,0.15));
+	@include border-radius(3px);
+	border:1px solid $lightGray;
+	height: rhythm(1.5, 14px);
+	&:focus {
+		@include box-shadow(none);
+		border-color: $lightBlue;
+		outline: none;
+	}
+}
+
+textarea {
+	height: auto;
+}
+
+// select ----------------------------------------------------------------------
+select {
+	@include rhythm-borders(1px, .4, 14px, solid);
+	border: 1px solid $lightGray;
+	-webkit-appearance: menulist-button;
+	line-height:34px;
+  height: 34px;
+}
+
+
+// select and file inputs ------------------------------------------------------
+input[type="file"] {
+	font-size: 12px;
+	width:90%;
+	margin: 8px 0;
+}
+
+
+// submit ----------------------------------------------------------------------
+input[type="submit"] {
+	width: auto;
+}

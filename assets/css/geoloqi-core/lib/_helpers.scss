@@ -1,0 +1,101 @@
+.clearfix {
+	@include pie-clearfix;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+@mixin hide {
+  display: none !important;
+  visibility: hidden;
+}
+.hide { @include hide(); }
+
+@mixin show {
+  display: block !important;
+  visibility: visible;	
+}
+.show { @include show(); }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+@mixin visuallyhidden { 
+	border: 0; clip: 
+	rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	&.focusable:active, &.focusable:focus  {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	} 
+}
+.visuallyhidden { @include visuallyhidden; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+@mixin invisible {
+	visibility: hidden;
+}
+
+.invisible { @include invisible; }
+
+@include at-breakpoint($screen-large) {
+	.hide-large-screen {
+		@include hide();
+	}
+	.show-large-screen {
+		@include show();
+	}
+}
+
+@include at-breakpoint($screen-normal) {
+	.hide-normal {
+		@include hide();
+	}
+	.show-normal {
+		@include show();
+	}
+}
+
+@include at-breakpoint($screen-tablet-landscape) {
+	.hide-tablet-landscape {
+		@include hide();
+	}
+	.show-tablet-landscape {
+		@include show();
+	}
+}
+
+@include at-breakpoint($screen-tablet-portrait) {
+	.hide-tablet-portrait {
+		@include hide();
+	}
+	.show-tablet-portrait {
+		@include show();
+	}
+}
+
+@include at-breakpoint($screen-smartphone) {
+.hide-smartphone {
+		@include hide();
+	}
+	.show-smartphone {
+		@include show();
+	}
+}

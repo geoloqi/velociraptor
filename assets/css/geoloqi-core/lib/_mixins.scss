@@ -1,0 +1,118 @@
+@mixin button-color($light, $dark) {
+  background: mix($light, $dark, 50);
+  @include background(linear-gradient($light, $dark));
+  border-color: $dark;
+  text-shadow: 0 -1px 0 $dark;
+  &:hover {
+    background: $dark;
+  }
+}
+
+@mixin button-color-disabled($light, $dark) {
+  background: mix($light, $dark, 50);
+  @include background(linear-gradient($light, $dark));
+}
+
+@mixin box-color($light, $dark, $border-color) {
+  background: mix($light, $dark, 50);
+  @include background(linear-gradient($light, $dark));
+  border-color: $border-color;
+}
+
+@mixin old-clearfix(){
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clip-text($width:100%){
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@mixin image-replace($url, $width, $height, $background-color:transparent){
+	display:block;
+	width: $width;
+	height: $height;
+  text-indent:-9999em;
+	background: $background-color url($url) no-repeat 0 0;
+	overflow:hidden;
+}
+
+@mixin size($width, $height){
+	width: $width;
+	height: $height;
+}
+
+@mixin square($size){
+	@include size($size, $size);
+}
+
+@mixin position($type, $top:auto, $left:auto, $bottom:auto, $right:auto){
+	position: $type;
+	top: $top;
+	left: $left;
+	bottom: $bottom;
+	right: $right;
+}
+
+// Add arrows to an element
+@mixin arrow-base ($size, $color, $background: transparent){
+  background: $background;
+  position:relative;
+  &:after {
+    @include square(0);
+    content: "";
+    text-indent: -9999em;
+    display: block;
+  }
+}
+
+@mixin arrow-up ($size, $color, $background: transparent) {
+  @include arrow-base($size, $color, $background);
+  &:after {
+    margin-left:-($size);
+    border-left: $size solid $background;
+    border-right: $size solid $background;
+    border-bottom: $size solid $color;
+  } 
+}
+
+@mixin arrow-down ($size, $color, $background: transparent) {
+  @include arrow-base($size, $color, $background);
+  &:after {
+    margin-left:-($size);
+    border-left: $size solid $background;
+    border-right: $size solid $background;
+    border-top: $size solid $color;
+  } 
+}
+
+@mixin arrow-left ($size, $color, $background: transparent) {
+  @include arrow-base($size, $color, $background);
+  &:after {
+    margin-top:-($size);
+    border-top: $size solid $background;
+    border-left: $size solid $color;
+    border-bottom: $size solid $background;
+  } 
+}
+
+@mixin arrow-right ($size, $color, $background: transparent) {
+  @include arrow-base($size, $color, $background);
+  &:after {
+    margin-top:-($size);
+    border-top: $size solid $background;
+    border-right: $size solid $color;
+    border-bottom: $size solid $background;
+  } 
+}

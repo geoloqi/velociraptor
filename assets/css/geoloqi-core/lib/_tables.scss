@@ -1,0 +1,68 @@
+table {
+	@include leader(1);
+	@include trailer(1);
+	width: 100%;
+	th,td{
+		padding: $font-unit / 2;
+	}
+	td {
+		@include adjust-font-size-to(14px);
+	}
+	th {
+		@include adjust-font-size-to(18px);
+		font-family: $PTSans;
+		text-align: left;
+	}
+	tfoot, thead {
+		&.strong {
+			background: $lightestGray;
+			th,td {
+				border-color: $gray;
+			}
+			th {
+				@include apply-side-rhythm-border(bottom, 2px, .5, $font-unit);
+			}
+			td {
+				@include apply-side-rhythm-border(top, 2px, .5, $font-unit);
+			}
+		}
+	}
+	tfoot {
+		td {
+			@include adjust-font-size-to(18px);
+			font-family: $PTSans;
+			font-weight:700;
+		}
+	}
+
+	caption {
+		@extend small;
+		text-align:left;
+		color: $gray;
+		caption-side: bottom;
+	}
+	// @TODO - Sortable Headers
+
+	&.bordered {
+		background: $white;
+		th, td {
+			@include rhythm-borders(1px, .5, $font-unit);
+			border-color: $lightGray;
+		}
+	}
+	&.striped {
+		tbody {
+			tr:nth-child(even) {
+				background:$lightestGray;
+			}
+		}
+	}
+	&.hover-rows {
+		tbody {
+			tr:hover {
+				background: $lightBlue;
+			}
+		}
+	}
+}
+
