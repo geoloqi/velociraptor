@@ -28,22 +28,18 @@ gem "foreman",              "~> 0.57.0"
 gem "mongoid",              "~> 3.0.4"
 gem "mongoid-pagination"
 gem "mongoid_search",       "~> 0.3.0"
-gem 'mongoid_slug',         :git => "git://github.com/hakanensari/mongoid-slug.git"
+gem "mongoid_slug",         "~> 1.0.1"
 gem "mongoid-tree",         "~> 1.0.0"
 
 # Misc.
-gem 'puma'
 gem "rake",                               :require => nil
 gem "highline",             "~> 1.6.13",  :require => "highline/import"
 
 # File Uploads
-gem "carrierwave",          "~> 0.6.2"
+#gem "carrierwave", "~> 0.7.0"
 
 # Email
 gem "pony",                 "~> 1.4"
-
-# Integration
-gem "gauges",               "~> 0.2.1"
 
 # Authentication
 gem "omniauth"    

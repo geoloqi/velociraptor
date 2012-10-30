@@ -1,7 +1,5 @@
 class Application < Sinatra::Base
   helpers do
-    include Sprockets::Helpers
-
     def add_header_js(*javascripts)
       @_head_javascript ||= []
       @_head_javascript += javascripts

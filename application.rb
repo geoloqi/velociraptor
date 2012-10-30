@@ -5,7 +5,7 @@ ENV['RACK_ENV'] ||= 'development'
 Encoding.default_internal = 'UTF-8'
 Encoding.default_external = 'UTF-8'
 
-# Sync stdout for foreman
+# Sync stdout for foreman/heroku
 $stdout.sync = true
 
 # Require gems
@@ -39,7 +39,6 @@ class Application < Sinatra::Base
   register Sinatra::Flash
   helpers  Sinatra::UserAgentHelpers
 
-  # Set Sinatra Root
   set :root,            File.dirname(__FILE__)
   set :views,           'views'
   set :public_folder,   'public'
@@ -69,69 +68,52 @@ class Application < Sinatra::Base
     settings.controller_names << File.basename(file, '.rb')
   end
 
-  # Params Shortcut
-  def p
-    Hashie::Mash.new params
-  end
-
   # Initialize Mongoid
   Mongoid.load!(File.join(settings.root,"config","mongoid.yaml"))
   Mongoid.logger = Logger.new($stdout, :info) if ENV['RACK_ENV'] == "development"
 
   # Initialize Redis and Resque
-  configure do
-    REDIS = Redis.new_from_yaml(File.join(settings.root,"config","redis.yaml"));
-    Resque.redis = REDIS
-  end
-
+  REDIS = Redis.new_from_yaml(File.join(settings.root,"config","redis.yaml"));
+  Resque.redis = REDIS
+  
   # Setup Sprockets
-  set :sprockets_root,  File.dirname(__FILE__)
-  set :sprockets,       Sprockets::Environment.new
-  set :assets_prefix,   '/assets'
-  set :assets_path,     File.join(settings.sprockets_root, settings.assets_prefix)
-
+  set :sprockets,     Sprockets::Environment.new(root)
+  set :precompile,    [ /\w+\.(?!js|css).+/, /application.(css|js)$/ ]
+  set :assets_prefix, "/assets"
+  set :digest_assets, false
+  set(:assets_path)   { File.join public_folder, assets_prefix }
+  
   configure do
-    # Set paths
-    settings.sprockets.append_path File.join(settings.assets_path, 'css')
-    settings.sprockets.append_path File.join(settings.assets_path, 'js')
-    settings.sprockets.append_path File.join(settings.assets_path, 'img')
+    # Setup Sprockets
+    sprockets.append_path File.join(root, "assets", "css")
+    sprockets.append_path File.join(root, "assets", "js")
+    sprockets.append_path File.join(root, "assets", "img")
 
-    # Configure Compass so it can find images
-    Compass.configuration do |compass|
-      compass.project_path = settings.assets_path
-      compass.images_dir   = 'img'
-      compass.output_style = ENV['RACK_ENV'] == 'production' ? :compressed : :expanded
-    end
-    
-    # Configure Sprockets::Helpers
+    # Configure Sprockets::Helpers (if necessary)
     Sprockets::Helpers.configure do |config|
-      config.environment = settings.sprockets
-      config.prefix      = settings.assets_prefix
-      config.digest      = true
-      config.manifest    = Sprockets::Manifest.new(
-        settings.sprockets,
-        File.join(
-          File.expand_path('../../public/assets', __FILE__), 'manifest.json'
-        )
-      )
-      
-      # Clean out manifest
-      config.manifest.clean
-      
-      # Scoop up the images so they can come along for the party
-      images = Dir.glob(File.join(settings.assets_path, 'images', '**', '*')).map do |filepath|
-        filepath.split('/').last
-      end
-
-      # Note: .coffee files need to be referenced as .js for some reason
-      javascript_files = Dir.glob(File.join(settings.assets_path, 'javascripts', '**', '*')).map do |filepath|
-        filepath.split('/').last.gsub(/coffee/, 'js')
-      end
-
-      # Write the digested files out to public/assets
-      config.manifest.compile(%w(style.css) | javascript_files | images)
+      config.environment = sprockets
+      config.prefix      = assets_prefix
+      config.digest      = digest_assets
+      config.public_path = public_folder
     end
   end
+
+  helpers do
+    include Sprockets::Helpers
+  end
+
+  # Configure Compass so it can find images
+  Compass.configuration do |compass|
+    compass.project_path = assets_path
+    compass.images_dir   = 'img'
+    compass.output_style = ENV['RACK_ENV'] == 'production' ? :compressed : :expanded
+  end
+
+  # Params Shortcut
+  def p
+    Hashie::Mash.new params
+  end
+
 end
 
 # Require Controllers

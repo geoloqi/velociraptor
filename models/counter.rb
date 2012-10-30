@@ -1,3 +1,4 @@
+=begin
 class Counter
   include Mongoid::Document
   
@@ -35,3 +36,4 @@ class Counter
   end
 
 end
+=end

@@ -1,16 +1,8 @@
 GIT
-  remote: git://github.com/hakanensari/mongoid-slug.git
-  revision: 8b5a112d8324c254cccd602348bac04a823ba5fc
-  specs:
-    mongoid_slug (0.10.0)
-      mongoid (~> 3.0)
-      stringex (~> 1.4)
-
-GIT
   remote: git://github.com/patrickarlt/formula-framework.git
-  revision: 842ad16a67d03248be75a3c47c78e1213e2b63da
+  revision: cb1ca8a3e119ab4820c0cdbaca2d9d11052a1e55
   specs:
-    formula-framework (0.0.1.a.1)
+    formula-framework (0.0.1.a.2)
 
 GEM
   remote: http://rubygems.org/
@@ -24,44 +16,36 @@ GEM
     addressable (2.3.2)
     backports (2.6.4)
     bcrypt-ruby (3.0.1)
-    builder (3.0.0)
-    carrierwave (0.6.2)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
+    builder (3.0.4)
     chunky_png (1.2.6)
-    coderay (1.0.7)
+    coderay (1.0.8)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     crack (0.3.1)
     erubis (2.7.0)
-    eventmachine (0.12.10)
-    excon (0.16.1)
+    eventmachine (1.0.0)
+    excon (0.16.7)
     faraday (0.8.4)
       multipart-post (~> 1.1)
     fast-stemmer (1.0.1)
     foreman (0.57.0)
       thor (>= 0.13.6)
     fssm (0.2.9)
-    gauges (0.2.1)
-      httparty (~> 0.7)
     hashie (1.2.0)
-    heroku (2.30.5)
-      heroku-api (~> 0.3.4)
+    heroku (2.33.0)
+      heroku-api (~> 0.3.5)
       launchy (>= 0.3.2)
       netrc (~> 0.7.7)
       rest-client (~> 1.6.1)
       rubyzip
-    heroku-api (0.3.4)
+    heroku-api (0.3.5)
       excon (~> 0.16.1)
-    highline (1.6.13)
+    highline (1.6.15)
     hike (1.2.1)
-    httparty (0.8.3)
-      multi_json (~> 1.0)
-      multi_xml
-    httpauth (0.1)
-    i18n (0.6.0)
+    httpauth (0.2.0)
+    i18n (0.6.1)
     json (1.7.5)
     jwt (0.1.5)
       multi_json (>= 1.0)
@@ -71,10 +55,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8)
+    method_source (0.8.1)
     mime-types (1.19)
-    minitest (3.3.0)
-    mongoid (3.0.4)
+    minitest (4.1.0)
+    mongoid (3.0.10)
       activemodel (~> 3.1)
       moped (~> 1.1)
       origin (~> 1.0)
@@ -82,25 +66,27 @@ GEM
     mongoid-pagination (0.2.0)
       activesupport
       mongoid
-    mongoid-tree (1.0.0)
+    mongoid-tree (1.0.1)
       mongoid (>= 3.0, <= 4.0)
     mongoid_search (0.3.0)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
-    moped (1.2.0)
+    mongoid_slug (1.0.1)
+      mongoid (~> 3.0)
+      stringex (~> 1.4)
+    moped (1.2.7)
     multi_json (1.3.6)
-    multi_xml (0.5.1)
     multipart-post (1.1.5)
     netrc (0.7.7)
-    newrelic_rpm (3.4.1)
-    oauth (0.4.6)
+    newrelic_rpm (3.5.0.1)
+    oauth (0.4.7)
     oauth2 (0.8.0)
       faraday (~> 0.8)
       httpauth (~> 0.1)
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    omniauth (1.1.0)
+    omniauth (1.1.1)
       hashie (~> 1.2)
       rack
     omniauth-facebook (1.4.1)
@@ -108,13 +94,13 @@ GEM
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
-    omniauth-oauth2 (1.1.0)
+    omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    omniauth-twitter (0.0.12)
+    omniauth-twitter (0.0.13)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    origin (1.0.6)
+    origin (1.0.9)
     polyglot (0.3.3)
     pony (1.4)
       mail (> 2.0)
@@ -124,15 +110,13 @@ GEM
       slop (~> 3.3.1)
     pry-nav (0.2.2)
       pry (~> 0.9.10)
-    puma (1.6.1)
-      rack (~> 1.2)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
     rake (0.9.2.2)
-    redis (3.0.1)
+    redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
     resque (1.22.0)
@@ -155,15 +139,15 @@ GEM
     sass (3.2.1)
     shotgun (0.9)
       rack (>= 1.0)
-    simplecov (0.6.4)
+    simplecov (0.7.1)
       multi_json (~> 1.0)
-      simplecov-html (~> 0.5.3)
-    simplecov-html (0.5.3)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-contrib (1.3.1)
+    sinatra-contrib (1.3.2)
       backports (>= 2.0)
       eventmachine
       rack-protection
@@ -174,27 +158,27 @@ GEM
       sinatra (>= 1.0.0)
     sinatra-support (1.2.2)
       sinatra (>= 1.0)
-    slop (3.3.2)
-    sprockets (2.4.5)
+    slop (3.3.3)
+    sprockets (2.8.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-helpers (0.6.1)
+    sprockets-helpers (0.7.2)
       sprockets (~> 2.0)
-    sprockets-sass (0.9.0)
+    sprockets-sass (0.9.1)
       sprockets (~> 2.0)
       tilt (~> 1.1)
     stringex (1.4.0)
     thor (0.16.0)
     tilt (1.3.3)
-    treetop (1.4.10)
+    treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.33)
+    tzinfo (0.3.34)
     vegas (0.1.11)
       rack (>= 1.0.0)
-    webmock (1.8.9)
+    webmock (1.8.11)
       addressable (>= 2.2.7)
       crack (>= 0.1.7)
 
@@ -203,12 +187,10 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
-  carrierwave (~> 0.6.2)
   compass (~> 0.12.2)
   erubis (= 2.7.0)
   foreman (~> 0.57.0)
   formula-framework!
-  gauges (~> 0.2.1)
   hashie (= 1.2.0)
   heroku
   highline (~> 1.6.13)
@@ -218,7 +200,7 @@ DEPENDENCIES
   mongoid-pagination
   mongoid-tree (~> 1.0.0)
   mongoid_search (~> 0.3.0)
-  mongoid_slug!
+  mongoid_slug (~> 1.0.1)
   newrelic_rpm
   omniauth
   omniauth-facebook (~> 1.4.1)
@@ -226,7 +208,6 @@ DEPENDENCIES
   pony (~> 1.4)
   pry
   pry-nav
-  puma
   rack-test
   rake
   redis (~> 3.0.0)
