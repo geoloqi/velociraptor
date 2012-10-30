@@ -1,5 +1,0 @@
-queue_counter:
-  every: 1m
-  class: Counter
-  queue: counter
-  description: "Increment the cron counter"

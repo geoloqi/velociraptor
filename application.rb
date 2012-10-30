@@ -67,14 +67,6 @@ class Application < Sinatra::Base
   Dir.glob('controllers/*.rb').each do |file|
     settings.controller_names << File.basename(file, '.rb')
   end
-
-  # Initialize Mongoid
-  Mongoid.load!(File.join(settings.root,"config","mongoid.yaml"))
-  Mongoid.logger = Logger.new($stdout, :info) if ENV['RACK_ENV'] == "development"
-
-  # Initialize Redis and Resque
-  REDIS = Redis.new_from_yaml(File.join(settings.root,"config","redis.yaml"));
-  Resque.redis = REDIS
   
   # Setup Sprockets
   set :sprockets,     Sprockets::Environment.new(root)
