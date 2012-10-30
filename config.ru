@@ -1,5 +1,4 @@
 require './application.rb'
-#require 'resque/server'
 
 map '/' do
   run Application
@@ -14,7 +13,3 @@ end
 map Application.assets_prefix do
   run Application.sprockets
 end
-
-#map '/resque' do 
-# run Resque::Server.new
-#end

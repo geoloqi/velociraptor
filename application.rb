@@ -23,7 +23,7 @@ Dir.glob(%w{lib/** helpers models}.map! {|d| File.join d, '*.rb'}).each {|f| req
 class Application < Sinatra::Base
 
   # Load Configuration Variables  
-  @@config = Hashie::Mash.new YAML.load_file('./config/config.yaml')[ENV['RACK_ENV'].to_s]
+  @@config = Hashie::Mash.new YAML.load_file('./config.yaml')[ENV['RACK_ENV'].to_s]
   def self.Config
     @@config
   end
