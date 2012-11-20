@@ -18,71 +18,63 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	@include adjust-font-size-to(48px);
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 48px);
+	@include adjust-font-size-to(36px);
+	&.leader {
+		@include leader(2, 36px);
 	}
-	&.small {
-		@extend h4;
+	&.trailer {
+		@include trailer(0.5, 36px);
 	}
 }
 
 h2 {
-	@include adjust-font-size-to(36px);
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 36px);
+	@include adjust-font-size-to(32px);
+	&.leader {
+		@include leader(2, 32px);
+	}
+	&.trailer {
+		@include trailer(0.5, 32px);
 	}
 }
 
 h3 {
 	@include adjust-font-size-to(24px);
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 24px);
+	&.leader {
+		@include leader(2, 24px);
+	}
+	&.trailer {
+		@include trailer(0.5, 24px);
 	}
 }
 
 h4 {
 	@include adjust-font-size-to(18px);
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 18px);
+	&.leader {
+		@include leader(2, 18px);
+	}
+	&.trailer {
+		@include trailer(0.5, 18px);
 	}
 }
 
 h5 {
 	@include adjust-font-size-to(16px);
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 16px);
+	&.leader {
+		@include leader(2, 16px);
+	}
+	&.trailer {
+		@include trailer(0.5, 16px);
 	}
 }
 
 h6 {
 	@include adjust-font-size-to(16px);
 	color: $darkerGray;
-	&.divider {
-		@include apply-side-rhythm-border(bottom ,1px, 0, 16px);
+	&.leader {
+		@include leader(2, 16px);
 	}
-}
-
-h1,h2,h3,h4,h5,h6 {
-	&.compress {
-		@include leader(0);
-		@include trailer(0);
-	}
-	&.compress-top {
-		@include leader(0);
-	}
-	&.compress-bottom {
-		@include trailer(0);
-	}
-	&.compress-half {
-		@include leader(.5);
-		@include trailer(.5);
-	}
-	&.compress-top-half {
-		@include leader(.5);
-	}
-	&.compress-bottom-half {
-		@include trailer(.5);
+	&.trailer {
+		@include trailer(0.5, 16px);
 	}
 }
 
@@ -100,15 +92,9 @@ blockquote {
 // paragraphs ------------------------------------------------------------------
 
 p {
+	margin:0;
 	@include trailer(1);
 	@include adjust-font-size-to(14px);
-	margin-top:0;
-	&.large {
-		@include adjust-font-size-to(18px);
-	}
-	&.small {
-		@include adjust-font-size-to(13px);
-	}
 }
 
 // links -----------------------------------------------------------------------

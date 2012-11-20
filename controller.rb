@@ -1,14 +1,26 @@
 class Application < Sinatra::Base
 
+  before do
+    add_js "libs/dojo/dojo/dojo", "application"
+    add_css "screen"
+  end
+
   # Put Routes Here
   get "/" do
-    title "Home Page"
-    description "An application framework with Sinatra, MongoID, and Redis"
-    add_js "application"
-    add_css "screen"
-    #@message = "Hello visitor ##{Counter.increment.to_s} the CRON has been run #{Counter.cron.to_s} times"
-    @message = "Hello"
+    mobile_view true
+    @content = Geoloqi::Pages.find 'home'
+    full_title @content.title
+    description @content.description
     erb :index
   end
 
+
+  get "page/:id" do
+    params[:id]
+    p.id
+  end
+
+  post "application" do
+  end
+  
 end

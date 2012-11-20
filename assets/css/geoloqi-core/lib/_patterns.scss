@@ -99,7 +99,7 @@
 	@extend .icon-cancel
 }
 
-.box, .well {
+.box {
 	@include border-radius(4px);
 	@include box-shadow(0 2px 2px rgba(0,0,0,0.1));
 	@include rhythm-borders(1px, 1);
@@ -182,7 +182,6 @@
 		}
 	}
 }
-
 
 .tabs {
 	@include old-clearfix();

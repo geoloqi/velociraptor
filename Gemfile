@@ -23,9 +23,16 @@ gem "rake",                               :require => nil
 gem "highline",             "~> 1.6.13",  :require => "highline/import"
 
 # Sprockets
-gem 'sprockets'
-gem 'sprockets-sass'
-gem 'sprockets-helpers'
+gem "sprockets"
+gem "sprockets-sass"
+gem "sprockets-helpers"
+
+# Caching
+gem "dalli",               "1.0.5"
+
+# Pages
+gem "redcarpet"
+gem "nokogiri",            "1.5.0"
 
 group :development do
   gem "shotgun"

@@ -22,10 +22,8 @@ Dir.glob(%w{lib/** helpers models}.map! {|d| File.join d, '*.rb'}).each {|f| req
 # Start setting up our application by extending Sinatra::Base
 class Application < Sinatra::Base
 
-  # Load Configuration Variables  
-  @@config = Hashie::Mash.new YAML.load_file('./config.yaml')[ENV['RACK_ENV'].to_s]
   def self.Config
-    @@config
+    @@config ||= Hashie::Mash.new YAML.load_file('./config.yml')[ENV['RACK_ENV'].to_s]
   end
 
   def self.production?
@@ -38,13 +36,13 @@ class Application < Sinatra::Base
   
   register Sinatra::Flash
   helpers  Sinatra::UserAgentHelpers
-
+  
   set :root,            File.dirname(__FILE__)
   set :views,           'views'
   set :public_folder,   'public'
   set :erubis,          :escape_html => true
   set :sessions,        true
-  set :session_secret,  @@config.session_secret
+  set :session_secret,  self.Config.session_secret
 
   # Development Specific Configuration
   configure :development do
@@ -61,6 +59,9 @@ class Application < Sinatra::Base
   configure :production do
     Bundler.require :production
   end
+
+  # Setup Caching
+  Geoloqi::Cache = Dalli::Client.new (ENV['MEMCACHE_SERVERS'] ? "#{ENV['MEMCACHE_USERNAME']}:#{ENV['MEMCACHE_PASSWORD']}@#{ENV['MEMCACHE_SERVERS']}" : 'localhost:11211')
 
   # Set controller names so we can map them in the config.ru file.
   set :controller_names, []

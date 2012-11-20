@@ -10,17 +10,21 @@ class Application < Sinatra::Base
     end
 
     def title(*value)
-      if @_title.blank?
-        @_title = "#{value.first} - #{Application.Config.title}" 
-      elsif !@_full_title.blank?
-        "<title>#{@_full_title}</title>"
-      else
-        "<title>#{@_title} - #{Application.Config.title}</title>"
-      end
+      @_title = "#{value.first} - #{Application.Config.title}" 
     end
 
     def full_title(*value); 
       @_full_title = value.first
+    end
+
+    def page_title
+      if(!@_full_title.blank?)
+        "<title>#{@_full_title}</title>"
+      elsif !@_title.blank?
+        "<title>#{@_title} - #{Application.Config.title}</title>"
+      else
+        "<title>#{Application.Config.title}</title>"
+      end
     end
 
     def description(*value)
@@ -49,7 +53,7 @@ class Application < Sinatra::Base
 
     def path_class
       classes = request.path.split('/')
-      classes.push('root') if request.path == '/'
+      classes.push(" root") if request.path == '/'
       classes.join(" ")
     end
   end

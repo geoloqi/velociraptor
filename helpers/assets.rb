@@ -15,7 +15,7 @@ class Application < Sinatra::Base
       @_css += stylesheets
     end
 
-    def extra_js position = :footer
+    def include_js position = :footer
       @_foot_javascript ||= []
       @_head_javascript ||= []
       extra_javascript = ""
@@ -34,7 +34,7 @@ class Application < Sinatra::Base
       extra_javascript
     end
 
-    def extra_css
+    def include_css
       extra_stylesheets = ""
       unless @_css.to_a.empty?
         

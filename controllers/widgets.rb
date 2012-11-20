@@ -4,8 +4,14 @@ class Widgets < Application
   get "/" do
     title "Widget Page"
     description "Look at our wonderful collection of widgets."
-    @message = "Hello visitor ##{Counter.increment.to_s} the CRON has been run #{Counter.cron.to_s} times"
+    @message = "Hello"
     erb :index
+  end
+
+  post "/" do
+    # make a new widget
+    flash[:success] = "Created a new widget!"
+    redirect "widgets"
   end
 
 end
