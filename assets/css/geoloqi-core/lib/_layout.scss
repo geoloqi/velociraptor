@@ -8,7 +8,7 @@ $footer-height: 220px;
 
 // layout ----------------------------------------------------------------------
 #page {
-	@include margin-leader(4);
+	@include padding-leader(4);
 	@include margin-trailer(2);
 	@if $enable-grids {
 		@include susy-grid-background;

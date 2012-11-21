@@ -56,5 +56,9 @@ class Application < Sinatra::Base
       classes.push(" root") if request.path == '/'
       classes.join(" ")
     end
+
+    def current_page(*matches)
+      "active" if matches.include? request.path
+    end
   end
 end
